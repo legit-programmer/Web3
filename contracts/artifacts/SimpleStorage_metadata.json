@@ -30,6 +30,92 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "people",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "person1",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pureRetrieve",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_age",
+						"type": "uint256"
+					}
+				],
+				"name": "pushToPeople",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "retrieve",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -60,11 +146,11 @@
 	},
 	"sources": {
 		"contracts/SImpleStorage.sol": {
-			"keccak256": "0xadff05b85000fee78bb1b2e89a41f90be434abe985f642d0bf5d691d89dad8ea",
+			"keccak256": "0xeba1e9c4f8f2c17ab9f2f36d6c66d3b8efc777c43f9104cdea97a18adc42c4a7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0e46bc5081d89e0400e6e69f6cd5292bff1cc810a363262521363ef8e652da4b",
-				"dweb:/ipfs/QmYfRYdChdZb8qHawA2iGBHf568XXbpzGwZ9Z6rt8KE1pt"
+				"bzz-raw://bd60ffdf0db2ffc7cfbb6ed007548951bd6c2a7939dc6132e1fa7689a362053f",
+				"dweb:/ipfs/QmPS1ZQwLW4RLPgxDm6FJvwofVkP23ncXuwkFeZhGqBxWa"
 			]
 		}
 	},
