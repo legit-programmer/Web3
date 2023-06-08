@@ -22,6 +22,8 @@ contract SimpleStorage {
         return 1+1;
     }
 
+    //calldata: temporary and cannot modify, memory: temporary but can be modified, storage: not permenant and can be changed
+    // structs, array and maps should have these keywords
     function pushToPeople(string memory _name, uint256 _age) public{
         people.push(Person(_name, _age));
     }
