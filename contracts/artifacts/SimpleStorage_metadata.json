@@ -56,6 +56,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "peopleInMap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "person1",
 				"outputs": [
@@ -146,11 +165,11 @@
 	},
 	"sources": {
 		"contracts/SImpleStorage.sol": {
-			"keccak256": "0x60db883699ed6c8d34acc0b2c4914876ab1af106c03b04716df403a81424ea8f",
+			"keccak256": "0x9e4bea97fc789898002f97462f30623683309a934c0f7fc14a629230bc2c6385",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://37068de466f35086bbe95de6b4eae0cb636630451d5889ce3868032242a9f3fc",
-				"dweb:/ipfs/QmPeCHFwG6pJi2qBUDirB2cGbYdkfXzTuf4HyAt5SkAdYx"
+				"bzz-raw://4a0d4ec31cf00a9fb4dc1289e35e3c93a3d358a2b22141ce475bf2390c5dc00f",
+				"dweb:/ipfs/QmWd9Cnp5gwFrVJQBHmavSokG4xkBySgsvU414XN76JbSV"
 			]
 		}
 	},

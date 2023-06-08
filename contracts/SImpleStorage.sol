@@ -10,10 +10,13 @@ contract SimpleStorage {
         uint256 age;
     }
 
+    mapping(string=>uint256) public peopleInMap;
+
     Person[] public people;
     function getNumber (uint256 _number) public {
         number = _number;
     }
+    
     function retrieve() public view returns(uint256){
         return number;
     }
@@ -26,6 +29,7 @@ contract SimpleStorage {
     // structs, array and maps should have these keywords
     function pushToPeople(string memory _name, uint256 _age) public{
         people.push(Person(_name, _age));
+        peopleInMap[_name] = _age;
     }
 }
 
