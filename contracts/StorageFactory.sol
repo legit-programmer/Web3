@@ -13,8 +13,8 @@ contract StorageFactory {
         tempStorage.storeNumber(number);
     }
 
-    function get(uint256 index) view public {
-        
+    function get(uint256 index) view public returns(uint256) {
+        // return storage's number
     }
 
 
