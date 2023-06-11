@@ -15,6 +15,9 @@ contract StorageFactory {
 
     function get(uint256 index) view public returns(uint256) {
         // return storage's number
+        SimpleStorage temp = _storage[index];
+        return temp.retrieve();
+        
     }
 
 
