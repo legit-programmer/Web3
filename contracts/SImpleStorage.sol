@@ -13,7 +13,7 @@ contract SimpleStorage {
     mapping(string=>uint256) public peopleInMap;
 
     Person[] public people;
-    function storeNumber (uint256 _number) public {
+    function storeNumber (uint256 _number) public virtual{
         number = _number;
     }
     
