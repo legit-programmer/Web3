@@ -14,11 +14,26 @@ contract FundMe {
     function fund() public payable {
         require(msg.value.getConversionRate()>=minUSD, "Didn't send enough");
         funders.push(msg.sender);
-        amounts[msg.sender] = msg.value;
+        amounts[msg.sender] += msg.value;
     }
 
     
     function withdraw() private{
+        for (uint256 i; i<funders.length;i++){
+            address funder = funders[i];
+            amounts[funder] = 0;
+        }
+        funders = new address[](0);
 
+        // transfer throws error
+        payable(msg.sender).transfer(address(this).balance);
+
+        // send returns bool
+        bool transactionStatus = payable(msg.sender).send(address(this).balance);
+        require(transactionStatus, "Not sent");
+
+        // call can call funtions
+        (bool success,) = payable(msg.sender).call{value:address(this).balance}("");
+        require(success, "Not sent");
     }
 }
