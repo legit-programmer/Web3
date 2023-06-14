@@ -8,7 +8,11 @@ contract FundMe {
     uint256 minUSD = 50;
     address[] public funders;
     mapping(address=>uint256) amounts;
+    address public owner;
 
+    constructor() {
+        owner = msg.sender;
+    }
     
 
     function fund() public payable {
@@ -18,7 +22,8 @@ contract FundMe {
     }
 
     
-    function withdraw() private{
+    function withdraw() public onlyOwner{
+        
         for (uint256 i; i<funders.length;i++){
             address funder = funders[i];
             amounts[funder] = 0;
@@ -26,14 +31,19 @@ contract FundMe {
         funders = new address[](0);
 
         // transfer throws error
-        payable(msg.sender).transfer(address(this).balance);
+        // payable(msg.sender).transfer(address(this).balance);
 
-        // send returns bool
-        bool transactionStatus = payable(msg.sender).send(address(this).balance);
-        require(transactionStatus, "Not sent");
+        // // send returns bool
+        // bool transactionStatus = payable(msg.sender).send(address(this).balance);
+        // require(transactionStatus, "Not sent");
 
         // call can call funtions
         (bool success,) = payable(msg.sender).call{value:address(this).balance}("");
         require(success, "Not sent");
+    }
+
+    modifier onlyOwner(){
+        require(msg.sender==owner, "You are not the owner lmao.");
+        _;
     }
 }
