@@ -5,10 +5,10 @@ import "contracts/PriceConverter.sol";
 contract FundMe {
     using PriceConverter for uint256;
 
-    uint256 minUSD = 50*1e18;
+    uint256 public constant MIN_USD = 50*1e18;
     address[] public funders;
     mapping(address=>uint256) public amounts;
-    address public owner;
+    address public immutable owner;
 
     constructor() {
         owner = msg.sender;
@@ -16,7 +16,7 @@ contract FundMe {
     
 
     function fund() public payable {
-        require(msg.value.getConversionRate()>=minUSD, "Didn't send enough");
+        require(msg.value.getConversionRate()>=MIN_USD, "Didn't send enough");
         funders.push(msg.sender);
         amounts[msg.sender] += msg.value;
     }
