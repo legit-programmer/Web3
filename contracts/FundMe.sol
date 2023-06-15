@@ -9,7 +9,7 @@ contract FundMe {
     address[] public funders;
     mapping(address=>uint256) public amounts;
     address public immutable owner;
-
+    error NotOwner();
     constructor() {
         owner = msg.sender;
     }
@@ -43,7 +43,10 @@ contract FundMe {
     }
 
     modifier onlyOwner(){
-        require(msg.sender==owner, "You are not the owner lmao.");
+        // require(msg.sender==owner, "You are not the owner lmao.");
+        if(msg.sender!=owner){
+            revert NotOwner();
+        }
         _;
     }
 }
