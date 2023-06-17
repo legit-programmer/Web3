@@ -37,10 +37,12 @@ myAddress = '0x375Ba847f5Abc256ccE68c1150BD930dA91A2Df0'
 privateKey = os.getenv("PRIVATE_KEY")
 
 SimpleStorage = web3.eth.contract(abi=abi, bytecode=byteCode)
+
 nonce = web3.eth.get_transaction_count(myAddress)
 transaction = SimpleStorage.constructor().build_transaction(
     {"chainId": chainid, "from": myAddress, "nonce": nonce})
 signed = web3.eth.account.sign_transaction(transaction, privateKey)
 txHash = web3.eth.send_raw_transaction(signed.rawTransaction)
 txReciept = web3.eth.wait_for_transaction_receipt(txHash)
+
 print(txReciept)
