@@ -42,4 +42,5 @@ transaction = SimpleStorage.constructor().build_transaction(
     {"chainId": chainid, "from": myAddress, "nonce": nonce})
 signed = web3.eth.account.sign_transaction(transaction, privateKey)
 txHash = web3.eth.send_raw_transaction(signed.rawTransaction)
-print(signed)
+txReciept = web3.eth.wait_for_transaction_receipt(txHash)
+print(txReciept)
