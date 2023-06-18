@@ -7,12 +7,21 @@ import os
 dotenv.load_dotenv()
 
 install_solc('0.8.8')
-with open("./SimpleStorage.sol", "r") as file:
+files = os.listdir()
+mainFile = ''
+for i in files:
+    if '.sol' in i:
+        print(f'{files.index(i)} {i}')
+
+mainFile = files[int(input('enter: '))]
+fileName = mainFile[:-4]
+
+with open(f"./{mainFile}", "r") as file:
     simple_storage_file = file.read()
 
     compiledSol = compile_standard(
         {"language": "Solidity",
-         "sources": {"SimpleStorage.sol": {"content": simple_storage_file}},
+         "sources": {f"{mainFile}": {"content": simple_storage_file}},
          "settings": {
              "outputSelection": {
                  "*": {
@@ -28,8 +37,8 @@ with open("./SimpleStorage.sol", "r") as file:
 with open("compiled.json", 'w') as file:
     json.dump(compiledSol, file)
 
-byteCode = compiledSol["contracts"]["SimpleStorage.sol"]['SimpleStorage']["evm"]["bytecode"]["object"]
-abi = compiledSol['contracts']['SimpleStorage.sol']['SimpleStorage']['abi']
+byteCode = compiledSol["contracts"][mainFile][fileName]["evm"]["bytecode"]["object"]
+abi = compiledSol['contracts'][mainFile][fileName]['abi']
 web3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
 chainid = 1337
 myAddress = '0x375Ba847f5Abc256ccE68c1150BD930dA91A2Df0'
