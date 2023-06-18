@@ -56,14 +56,13 @@ privateKey = os.getenv("PRIVATE_KEY")
 
 print('Deploying...')
 SimpleStorage = web3.eth.contract(abi=abi, bytecode=byteCode)
-print(web3.eth.get_block("latest").gasLimit)
-print(web3.eth.get_balance(myAddress))
 nonce = web3.eth.get_transaction_count(myAddress)
 transaction = SimpleStorage.constructor().build_transaction(
     {"from": myAddress, "nonce": nonce})
 signed = web3.eth.account.sign_transaction(transaction, privateKey)
 txHash = web3.eth.send_raw_transaction(signed.rawTransaction)
 txReciept = web3.eth.wait_for_transaction_receipt(txHash)
+print(f'Balance {web3.eth.get_balance(myAddress)}')
 
 print("Contract Deployed!")
 
