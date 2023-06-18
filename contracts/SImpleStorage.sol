@@ -14,8 +14,9 @@ contract SimpleStorage {
 
     Person[] public people;
 
-    function storeNumber(uint256 _number) public virtual {
+    function storeNumber(uint256 _number) public virtual returns(uint256){
         number = _number;
+        return number;
     }
 
     function retrieve() public view returns (uint256) {
