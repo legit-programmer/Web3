@@ -45,8 +45,8 @@ with open("compiled.json", 'w') as file:
 
 byteCode = compiledSol["contracts"][mainFile][fileName]["evm"]["bytecode"]["object"]
 abi = compiledSol['contracts'][mainFile][fileName]['abi']
-web3 = Web3(Web3.HTTPProvider('https://sepolia.infura.io/v3/38afa00d8bb04a869301d6f2a3ecd907'))
-chainid = 11155111
+web3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/8dBj1dorpFTrm_5bWnKdvESink68H7KV'))
+
 myAddress = '0x7F271cb4EeA76990c8B3aFDB882F3e0751C9676A'
 gasPrice = web3.eth.gas_price
 # Fake development keys
@@ -60,7 +60,7 @@ print(web3.eth.get_block("latest").gasLimit)
 print(web3.eth.get_balance(myAddress))
 nonce = web3.eth.get_transaction_count(myAddress)
 transaction = SimpleStorage.constructor().build_transaction(
-    {"chainId": chainid, "from": myAddress, "nonce": nonce})
+    {"from": myAddress, "nonce": nonce})
 signed = web3.eth.account.sign_transaction(transaction, privateKey)
 txHash = web3.eth.send_raw_transaction(signed.rawTransaction)
 txReciept = web3.eth.wait_for_transaction_receipt(txHash)
