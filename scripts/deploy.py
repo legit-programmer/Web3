@@ -9,6 +9,7 @@ dotenv.load_dotenv()
 # Deployment menu
 
 install_solc('0.8.8')
+os.chdir('../contracts')
 files = os.listdir()
 mainFile = ''
 for i in files:
@@ -20,7 +21,7 @@ fileName = mainFile[:-4]
 
 #Compiling .sol file
 print('Compiling...')
-with open(f"./{mainFile}", "r") as file:
+with open(f"{os.path.join(mainFile)}", "r") as file:
     simple_storage_file = file.read()
 
     compiledSol = compile_standard(
@@ -40,7 +41,7 @@ with open(f"./{mainFile}", "r") as file:
 print('Compiled!')
 #Storing compiled bytecode
 
-with open("compiled.json", 'w') as file:
+with open("../scripts/compiled.json", 'w') as file:
     json.dump(compiledSol, file)
 
 byteCode = compiledSol["contracts"][mainFile][fileName]["evm"]["bytecode"]["object"]
