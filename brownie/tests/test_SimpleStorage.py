@@ -1,5 +1,9 @@
 from brownie import SimpleStorage, accounts
 
+
+# brownie test -k function name: will only test given function
+# brownie test -s: more robust and will include print statements
+
 def test_deploy():
     #Testing categories:
     #Arrange
