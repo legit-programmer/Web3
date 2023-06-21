@@ -3,7 +3,7 @@ from.helpful_scripts import get_account
 
 def deploy():
     account = get_account()
-    FundMe.deploy({'from':account})
+    FundMe.deploy({'from':account}, publish_source=True)
     
 def main():
     network.priority_fee('1.5 gwei')
