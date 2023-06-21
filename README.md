@@ -1,3 +1,1 @@
-# Web3
-Building smart contracts and working with chains. ETH address being used is given below.
-<img src"https://thelowdown.momentum.asia/wp-content/uploads/2022/06/web3.gif">
+![]([https://github.com/Your_Repository_Name/Your_GIF_Name.gif](https://thelowdown.momentum.asia/wp-content/uploads/2022/06/web3.gif)https://thelowdown.momentum.asia/wp-content/uploads/2022/06/web3.gif)
