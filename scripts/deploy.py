@@ -46,7 +46,7 @@ with open("../scripts/compiled.json", 'w') as file:
 
 byteCode = compiledSol["contracts"][mainFile][fileName]["evm"]["bytecode"]["object"]
 abi = compiledSol['contracts'][mainFile][fileName]['abi']
-web3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/8dBj1dorpFTrm_5bWnKdvESink68H7KV'))
+web3 = Web3(Web3.HTTPProvider(os.getenv('API')))
 
 myAddress = '0x7F271cb4EeA76990c8B3aFDB882F3e0751C9676A'
 gasPrice = web3.eth.gas_price
