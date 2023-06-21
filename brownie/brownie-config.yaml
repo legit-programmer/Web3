@@ -1,1 +1,9 @@
 dotenv: ../.env
+dependencies: 
+    - smartcontractkit/chainlink-brownie-contracts@0.2.1
+# <organisation/repo>@<version>
+
+compiler:
+    solc: 
+        remappings:
+            - '@chainlink=smartcontractkit/chainlink-brownie-contracts@0.2.1'

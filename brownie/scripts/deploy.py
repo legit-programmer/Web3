@@ -1,11 +1,8 @@
 from brownie import accounts, SimpleStorage, network, config
 import os
+from.helpful_scripts import get_account
 
-def get_account():
-    if network.show_active()=='development':
-        return accounts[0]
-    else:
-        return accounts.add(os.getenv('PRIVATE_KEY'))
+
 
 def deploy_simple_storage():
     account = get_account()
