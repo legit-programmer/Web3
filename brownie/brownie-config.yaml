@@ -7,3 +7,7 @@ compiler:
     solc: 
         remappings:
             - '@chainlink=smartcontractkit/chainlink-brownie-contracts@0.2.1'
+
+networks:
+    sepolia-alchemy:
+        priceFeed: "0x694AA1769357215DE4FAC081bf1f309aDC325306"

@@ -1,10 +1,21 @@
-from brownie import accounts, FundMe, network
-from.helpful_scripts import get_account
+from web3 import Web3
+from brownie import FundMe, network, config
+from .helpful_scripts import get_account, deploy_mocks
+
 
 def deploy():
+    print(f'Active network is {network.show_active()}')
+    if network.show_active() != 'development':
+        priceFeedAddress = config['networks'][network.show_active(
+        )]['priceFeed']
+    else:
+
+        priceFeedAddress = deploy_mocks()
+
     account = get_account()
-    FundMe.deploy('0x694AA1769357215DE4FAC081bf1f309aDC325306', {'from':account}, publish_source=True)
-    
+    FundMe.deploy(priceFeedAddress, {'from': account})
+
+
 def main():
     network.priority_fee('1.5 gwei')
     deploy()
