@@ -10,12 +10,14 @@ contract FundMe {
     mapping(address=>uint256) public amounts;
     address public immutable owner;
     error NotOwner();
-    constructor() {
+    AggregatorV3Interface public priceFeed;
+    constructor(address _priceFeed) {
+        priceFeed = AggregatorV3Interface(_priceFeed);
         owner = msg.sender;
     }
 
     function getPrice() internal view returns (uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        
         (
             /* uint80 roundID */,
             int answer,
