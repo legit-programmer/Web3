@@ -2,8 +2,10 @@ from brownie import network, accounts, MockV3Aggregator
 import web3
 import os
 
+LOCAL_BLOCKCHAIN_ENVIRONMENTS = ['development', 'local-ganache']
+
 def get_account():
-    if network.show_active()=='development':
+    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
         return accounts[0]
     else:
         return accounts.add(os.getenv('PRIVATE_KEY'))
