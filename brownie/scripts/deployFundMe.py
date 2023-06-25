@@ -14,7 +14,7 @@ def deploy():
         priceFeedAddress = deploy_mocks()
 
     account = get_account()
-    FundMe.deploy(priceFeedAddress, {'from': account})
+    return FundMe.deploy(priceFeedAddress, {'from': account})
 
 
 def main():
